@@ -41,9 +41,16 @@ class SearchScreen extends StatelessWidget {
               children: [
                 defaultFormField(
                     controller: searchController,
+                    borderColor: NewsCubit.get(context).isDark?Colors.black:Colors.white,
+                    textStyle: TextStyle(
+                      color: NewsCubit.get(context).isDark?Colors.black:Colors.white,
+                    ),
                     obscure: false,
                     keyboardType: TextInputType.text,
                     label: 'Search here',
+                  hintStyle: TextStyle(
+                    color: NewsCubit.get(context).isDark?Colors.black:Colors.white,
+                  ),
                   onChange: (value){
                       value=searchController.text;
                       NewsCubit.get(context).searchData(search: value);

@@ -55,24 +55,43 @@ Widget defaultFormField({
   required String label,
    String? Function(String?)? validator,
    String? Function(String?)? onChange,
+  TextStyle?textStyle,
   void Function()? onTap,
   Icon ? prefixIcon,
   var  suffixIcon,
   double radius=10,
+  TextStyle?hintStyle,
+  required Color borderColor,
   bool isClickable=true,
   void Function(String)? onSubmit,
   context,
 }){
   return TextFormField(
+    cursorColor: borderColor,
     decoration:  InputDecoration(
       labelText: label,
       prefixIcon: prefixIcon,
       suffixIcon: suffixIcon,
+
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(radius),
       ),
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(color:borderColor),
+        borderRadius: BorderRadius.circular(radius),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: borderColor),
+        borderRadius: BorderRadius.circular(radius),
+      ),
+      disabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: borderColor),
+        borderRadius: BorderRadius.circular(radius),
+      ),
+      labelStyle: hintStyle,
     ),
     controller: controller,
+    style: textStyle,
     onFieldSubmitted: onSubmit,
     keyboardType: keyboardType,
     enabled: isClickable,
