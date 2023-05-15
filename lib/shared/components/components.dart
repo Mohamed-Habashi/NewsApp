@@ -53,7 +53,8 @@ Widget defaultFormField({
   required bool obscure,
   required var keyboardType,
   required String label,
-  required String? Function(String?)? validator,
+   String? Function(String?)? validator,
+   String? Function(String?)? onChange,
   void Function()? onTap,
   Icon ? prefixIcon,
   var  suffixIcon,
@@ -63,7 +64,6 @@ Widget defaultFormField({
   context,
 }){
   return TextFormField(
-    //style: Theme.of(context).textTheme.bodyText1,
     decoration:  InputDecoration(
       labelText: label,
       prefixIcon: prefixIcon,
@@ -77,6 +77,7 @@ Widget defaultFormField({
     keyboardType: keyboardType,
     enabled: isClickable,
     obscureText: obscure,
+    onChanged: onChange,
     validator: validator,
     onTap: onTap,
   );

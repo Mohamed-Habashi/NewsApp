@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:newsapp/cubit/news_cubit.dart';
 import 'package:newsapp/cubit/news_states.dart';
-import 'package:newsapp/shared/network/local/cache_helper.dart';
+import 'package:newsapp/screens/search_screen.dart';
+import 'package:newsapp/shared/components/components.dart';
 
 
 class HomeLayout extends StatelessWidget {
@@ -22,6 +23,15 @@ class HomeLayout extends StatelessWidget {
                 'News App'
             ),
             actions: [
+              IconButton(
+                onPressed: (){
+                  NewsCubit.get(context).newsModel=null;
+                 navigateTo(context: context, screen: const SearchScreen());
+                },
+                icon: const Icon(
+                  Icons.search,
+                ),
+              ),
               IconButton(
                 onPressed: (){
                   NewsCubit.get(context).changeThemeMode();

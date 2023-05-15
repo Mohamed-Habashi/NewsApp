@@ -46,7 +46,7 @@ class NewsCubit extends Cubit<NewsStates>{
       query: {
           'country':'us',
         'category':'science',
-        'apiKey':'2c51b6b52a6f492d9ece64d398f42a78',
+        'apiKey':'649cd2a621e2452fbb21d59aa6417d1c',
       }
     ).then((value){
       newsModel=NewsModel.fromJson(value.data);
@@ -63,7 +63,7 @@ class NewsCubit extends Cubit<NewsStates>{
       query: {
           'country':'us',
         'category':'business',
-        'apiKey':'2c51b6b52a6f492d9ece64d398f42a78',
+        'apiKey':'649cd2a621e2452fbb21d59aa6417d1c',
       }
     ).then((value){
       newsModel=NewsModel.fromJson(value.data);
@@ -80,7 +80,7 @@ class NewsCubit extends Cubit<NewsStates>{
       query: {
           'country':'us',
         'category':'sports',
-        'apiKey':'2c51b6b52a6f492d9ece64d398f42a78',
+        'apiKey':'649cd2a621e2452fbb21d59aa6417d1c',
       }
     ).then((value){
       newsModel=NewsModel.fromJson(value.data);
@@ -102,5 +102,25 @@ class NewsCubit extends Cubit<NewsStates>{
         emit(ChangeThemeModeSuccessState());
       });
     }
+  }
+
+  searchData({
+    required String search
+}){
+    emit(SearchDataLoadingState());
+
+    DioHelper.getData(
+        url: 'v2/everything',
+      query: {
+          'q':search,
+        'apiKey':'649cd2a621e2452fbb21d59aa6417d1c',
+      }
+    ).then((value){
+      newsModel=NewsModel.fromJson(value.data);
+      emit(SearchDataSuccessState());
+    }).catchError((error){
+      print(error.toString());
+      emit(SearchDataErrorState());
+    });
   }
 }

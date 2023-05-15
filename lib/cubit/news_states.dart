@@ -24,3 +24,9 @@ class GetSportsDataErrorState extends NewsStates{}
 
 class ChangeThemeModeSuccessState extends NewsStates{}
 
+class SearchDataLoadingState extends NewsStates{}
+
+class SearchDataSuccessState extends NewsStates{}
+
+class SearchDataErrorState extends NewsStates{}
+
